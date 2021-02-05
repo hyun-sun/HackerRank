@@ -1,18 +1,34 @@
-package com.itosamto;
+package interviewPreparationKit;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class WarmupChallenges {
-
+	// https://www.hackerrank.com/interview/interview-preparation-kit/warmup/challenges
 	public static void main(String[] args) {
-		System.out.println(countingValleys(8, "DDUUDDUDUUUD"));
+		System.out.println(repeatedString("a", 100));
 	}
 
 	// 2021.02.04
-	public static int repeatedString(String s, long n) {
+	// https://www.hackerrank.com/challenges/repeated-string/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup
+	public static long repeatedString(String s, long n) {
+		int allA = 0;
+		int indexA = 0;
 
-		return 0;
+		long repeatCount = n/s.length();
+		long lastIndex = n%s.length();
+
+		String[] ss = s.split("");
+
+		for(int i=0; i<s.length(); i++) {
+			if(ss[i].equals("a")) {
+				allA++;
+				if(i < lastIndex) {
+					indexA++;
+				}
+			}
+		}
+		return allA*repeatCount + indexA;
 	}
 
 	// 2021.01.30
@@ -38,7 +54,7 @@ public class WarmupChallenges {
 					in = true;
 					valleys++;
 				}
-			} else if (height >= 0) {
+			} else {
 				in = false;
 			}
 		}
